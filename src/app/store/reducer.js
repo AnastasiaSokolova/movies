@@ -1,9 +1,13 @@
-const reducer = (state, action) => {
+import constants from './constants';
+
+const reducer = (state=[], action) => {
     switch(action.type) {
-        case 'ADD_MOVIES':
-            state = [...state, action.payload];
+        case constants.LOAD_MOVIES:
+            return action.data;
+        case constants.SET_USER:
+            return {...state, user: action.data}
         default:
-            return []
+            return [{lol: 9}]
     }
 }
 
