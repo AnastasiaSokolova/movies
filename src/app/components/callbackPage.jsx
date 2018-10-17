@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
-import {setUser} from '../store/actions';
 import { CallbackComponent } from "redux-oidc";
 import { push } from "react-router-redux";
 import userManager from "../utils/userManager.jsx";
@@ -16,12 +15,11 @@ class CallbackPage extends Component {
             <CallbackComponent
                 userManager={userManager}
                 successCallback={(user) => {
-                   this.props.dispatch(push("localhost:8080/"));
+                   this.props.dispatch(push("/"));
                   }
                 }
                 errorCallback={error => {
                       this.props.dispatch(push("/"));
-                      console.error(error);
                 }}
             >
                 <div>Redirecting...</div>
@@ -31,8 +29,7 @@ class CallbackPage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatch: dispatch,
-    setUser: bindActionCreators((data) => setUser(data), dispatch),
+    dispatch: dispatch
 });
 
 

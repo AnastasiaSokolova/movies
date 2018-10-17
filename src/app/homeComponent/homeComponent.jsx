@@ -38,9 +38,6 @@ class Home extends Component {
 
     render() {
         const { user } = this.props;
-        console.log('MY USER');
-        console.log(this.props.state);
-        console.log(user);
         if(!user){
             return <LoginPage />
         }
@@ -48,7 +45,6 @@ class Home extends Component {
         return (
             <div className="home-component">
                 <div>Home component</div>
-                <Link to='/callback'>callback</Link>
                 <div className="movie-container">
                     {this.props.movies ? this.renderMoviesList() : null}
                 </div>

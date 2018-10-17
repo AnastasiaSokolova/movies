@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -24,7 +25,7 @@ import userManager  from './utils/userManager.jsx';
 import { loadUser } from 'redux-oidc';
 
 
-const initialState = {}
+const initialState = {};
 
 const store = createStore(
     combineReducers({
@@ -47,7 +48,7 @@ export default class  RootComponent extends Component {
         return (
             <div>
                     <Provider history={history} store={store}>
-                        <OidcProvider store={store} userManager={userManager}>
+                        <OidcProvider history={history} store={store} userManager={userManager}>
                         <Router>
                             <div>
                                 <Route path="/" component={Home}/>

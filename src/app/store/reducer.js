@@ -7,7 +7,7 @@ const reducer = (state=[], action) => {
         case constants.SET_USER:
             return {...state, user: action.data}
         default:
-            return [{lol: 9}]
+            return state
     }
 }
 
