@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { push } from "react-router-redux";
-import LoginPage from '../components/loginPage.jsx';
+import LoginPage from './loginPage.jsx';
 
 import { loadMovies, setUser } from '../store/actions';
 
@@ -18,11 +18,10 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.loadMovies();
-        //this.props.setUser();
     }
 
     renderMoviesList() {
-       let list =  this.props.movies.map((item, index) => {
+       return this.props.movies.map((item, index) => {
            let link = "/movie/" + item.id;
             return (
                 <div className="movie-item" key={index}>
@@ -30,9 +29,7 @@ class Home extends Component {
                     <div>{item.overview}</div>
                 </div>
             )
-        })
-
-        return list
+        });
     }
 
 
@@ -54,14 +51,12 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-   state: state,
    user: state.oidc.user,
    movies: state.moviesData
 });
 
 const mapDispatchToProps = (dispatch) => ({
     dispatch: dispatch,
-    //setUser: bindActionCreators((data) => setUser(data), dispatch),
     loadMovies: bindActionCreators((data) => loadMovies(data), dispatch),
 });
 

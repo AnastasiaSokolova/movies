@@ -14,12 +14,12 @@ class CallbackPage extends Component {
         return (
             <CallbackComponent
                 userManager={userManager}
-                successCallback={(user) => {
-                   this.props.dispatch(push("/"));
+                successCallback={() => {
+                   this.props.history.push("/");
                   }
                 }
                 errorCallback={error => {
-                      this.props.dispatch(push("/"));
+                      this.props.history.push("/404");
                 }}
             >
                 <div>Redirecting...</div>
@@ -28,9 +28,5 @@ class CallbackPage extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    dispatch: dispatch
-});
 
-
-export default withRouter(connect(null, mapDispatchToProps)(CallbackPage));
+export default connect()(CallbackPage);

@@ -14,14 +14,3 @@ export const loadMovies = (data) => (dispatch) => {
                });
         })
 };
-
-export const setUser = (data) => (dispatch) => {
-    userManager.signinRedirectCallback()
-        .then((user) => {
-           dispatch({
-               type: constants.SET_USER,
-               data: user
-           });
-        })
-        .catch((error) => console.log(error));
-};
